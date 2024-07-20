@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Make a list of target
-vim tgt
-
 # Download and install Go
 wget https://go.dev/dl/go1.22.4.linux-amd64.tar.gz
 tar -C . -xzf go1.22.4.linux-amd64.tar.gz
