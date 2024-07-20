@@ -3,7 +3,7 @@
 # Download and install Go
 wget https://go.dev/dl/go1.22.4.linux-amd64.tar.gz
 tar -C . -xzf go1.22.4.linux-amd64.tar.gz
-export PATH=$PATH:/root/go/bin
+export PATH=$PATH:./go/bin
 
 # Install Nuclei
 go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
