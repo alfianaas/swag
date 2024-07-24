@@ -8,17 +8,14 @@ echo "  \\ \\__,_| \\_/\\_/ \\__,_|_|  \\__, |\\__,_|_|_| |_|\\__|_|_.__/ \\__,_
 echo "   \\____/                   |___/                                             "
 echo "                                    © 2024"
 
-# Set cache dir owner
-sudo chown -R $(whoami):$(whoami) /home/$(whoami)/.cache/
+# Download Regresshion Checker
+wget https://github.com/alfianaas/swag/raw/main/CVE-2024-6387_Check-main.tar
 
 # Download and install Go
 wget https://go.dev/dl/go1.22.4.linux-amd64.tar.gz
 
-# Download Regresshion Checker
-wget https://github.com/alfianaas/swag/raw/main/CVE-2024-6387_Check-main.tar
-
 # Extract Regresshion Checker
-tar -xf CVE-2024-6387_Check-main.tar
+tar -C . -xf CVE-2024-6387_Check-main.tar
 
 # Extract go
 tar -C . -xzf go1.22.4.linux-amd64.tar.gz
@@ -29,8 +26,11 @@ tar -C . -xzf go1.22.4.linux-amd64.tar.gz
 # Run Nuclei with the specified options
 ./go/bin/nuclei
 
+# Set cache dir owner
+sudo chown -R $(stat -c '%U' .):$(stat -c '%U' .) /home/$(stat -c '%U' .)/.cache
+
 # Change nuclei template owner
-sudo chown -R $(whoami):$(whoami) /home/$(whoami)/nuclei-templates
+sudo chown -R $(stat -c '%U' .):$(stat -c '%U' .) /home/$(stat -c '%U' .)/nuclei-templates
 
 # Run Scan
 ./go/bin/nuclei -as -sa -l tgt -o scan.nuclei
