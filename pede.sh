@@ -23,6 +23,8 @@ tar -xf CVE-2024-6387_Check-main.tar
 # Extract go
 tar -C . -xzf go1.22.4.linux-amd64.tar.gz
 
+sudo chown -R $(whoami):$(whoami) /home/$(whoami)/nuclei-templates
+
 # Install Nuclei
 ./go/bin/go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 
