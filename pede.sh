@@ -17,15 +17,13 @@ tar -xf CVE-2024-6387_Check-main.tar
 
 tar -C . -xzf go1.22.4.linux-amd64.tar.gz
 
-export PATH=$PATH:./go/bin
-
 # Install Nuclei
 ./go/bin/go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 
 # Run Nuclei with the specified options
-nuclei -as -sa -l tgt -o scan.nuclei
+./go/bin/nuclei -as -sa -l tgt -o scan.nuclei
 
 # Run the CVE-2024-6387_Check script
-python3 ./CVE-2024-6387_Check-main/CVE-2024-6387_Check.py --list tgt
+$(which python3) ./CVE-2024-6387_Check-main/CVE-2024-6387_Check.py --list tgt
 
 rm CVE-2024-6387_Check-main.tar
