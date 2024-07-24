@@ -20,7 +20,7 @@ tar -C . -xzf go1.22.4.linux-amd64.tar.gz
 export PATH=$PATH:./go/bin
 
 # Install Nuclei
-go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+./go/bin/go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 
 # Run Nuclei with the specified options
 nuclei -as -sa -l tgt -o scan.nuclei
