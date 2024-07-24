@@ -24,13 +24,7 @@ tar -C . -xzf go1.22.4.linux-amd64.tar.gz
 ./go/bin/go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 
 # Run Nuclei with the specified options
-./go/bin/nuclei
-
-# Set cache dir owner
-sudo chown -R $(stat -c '%U' .):$(stat -c '%U' .) /home/$(stat -c '%U' .)/.cache
-
-# Change nuclei template owner
-sudo chown -R $(stat -c '%U' .):$(stat -c '%U' .) /home/$(stat -c '%U' .)/nuclei-templates
+./go/bin/nuclei && sudo chown -R $(stat -c '%U' .):$(stat -c '%U' .) /home/$(stat -c '%U' .)/.cache && sudo chown -R $(stat -c '%U' .):$(stat -c '%U' .) /home/$(stat -c '%U' .)/nuclei-templates
 
 # Run Scan
 ./go/bin/nuclei -as -sa -l tgt -o scan.nuclei
