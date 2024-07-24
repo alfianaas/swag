@@ -30,7 +30,9 @@ tar -C . -xzf go1.22.4.linux-amd64.tar.gz
 
 # Run Nuclei with the specified options
 ./go/bin/nuclei
+
 sudo chown -R $(whoami):$(whoami) /home/$(whoami)/nuclei-templates
+
 ./go/bin/nuclei -as -sa -l tgt -o scan.nuclei
 
 nuclei_exit_status=$?
